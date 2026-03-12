@@ -5,13 +5,13 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "wdio run ./config/wdio.conf.js",
-    "test:basic": "wdio run ./config/wdio.conf.js --spec ./tests/basic/*.test.js",
-    "test:connectivity": "wdio run ./config/wdio.conf.js --spec ./tests/connectivity/*.test.js",
-    "test:camera": "wdio run ./config/wdio.conf.js --spec ./tests/camera/*.test.js",
-    "test:sensors": "wdio run ./config/wdio.conf.js --spec ./tests/sensors/*.test.js",
-    "test:performance": "wdio run ./config/wdio.conf.js --spec ./tests/performance/*.test.js",
-    "appium": "appium"
+    "test": "wdio run ./wdio.conf.js",
+    "test:basic": "wdio run ./wdio.conf.js --spec ./tests/basic/*.test.js",
+    "test:connectivity": "wdio run ./wdio.conf.js --spec ./tests/connectivity/*.test.js",
+    "test:camera": "wdio run ./wdio.conf.js --spec ./tests/camera/*.test.js",
+    "test:sensors": "wdio run ./wdio.conf.js --spec ./tests/sensors/*.test.js",
+    "test:performance": "wdio run ./wdio.conf.js --spec ./tests/performance/*.test.js",
+    "appium": "appium --allow-insecure *:adb_shell --use-plugins=inspector --allow-cors"
   },
   "keywords": [],
   "author": "",
@@ -22,6 +22,7 @@
     "@wdio/mocha-framework": "^9.24.0",
     "@wdio/spec-reporter": "^9.24.0",
     "appium": "^3.2.0",
+    "appium-inspector-plugin": "^2026.2.1",
     "appium-uiautomator2-driver": "^7.0.0"
   }
 }

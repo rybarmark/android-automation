@@ -9,7 +9,7 @@ export const config = {
     
     // Test specs
     specs: [
-        './tests/**/*.test.js'
+        '../tests/**/*.test.js'
     ],
     
     // Patterns to exclude
@@ -18,8 +18,8 @@ export const config = {
     // Capabilities
     capabilities: [{
         platformName: 'Android',
-        'appium:deviceName': 'Android Emulator',
-        'appium:platformVersion': '13',
+        'appium:deviceName': 'emulator-5554',
+        'appium:platformVersion': '16',
         'appium:automationName': 'UiAutomator2',
         // Use app package/activity instead of APK path for testing installed apps
         'appium:appPackage': 'com.android.settings',

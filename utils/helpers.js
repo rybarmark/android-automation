@@ -63,12 +63,12 @@ export async function getDeviceInfo() {
         platform,
         version,
         deviceName,
-        manufacturer: await driver.execute('mobile: shell', {
+        manufacturer: (await driver.execute('mobile: shell', {
             command: 'getprop ro.product.manufacturer'
-        }),
-        model: await driver.execute('mobile: shell', {
+        })).trim(),
+        model: (await driver.execute('mobile: shell', {
             command: 'getprop ro.product.model'
-        })
+        })).trim()
     };
 }
 

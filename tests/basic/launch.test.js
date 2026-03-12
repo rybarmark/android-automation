@@ -4,6 +4,9 @@ describe('Basic - App Launch & Device Info', () => {
     
     before(async () => {
         console.log('\n📱 Running Basic Tests...');
+        await driver.execute('mobile: shell', {
+            command: 'am start -n com.android.settings/.Settings'
+        });
     });
 
     it('should get device information', async () => {
@@ -16,9 +19,12 @@ describe('Basic - App Launch & Device Info', () => {
     });
 
     it('should launch Settings app successfully', async () => {
-        const packageName = await driver.getCurrentPackage();
+        await driver.waitUntil(
+            async () => (await driver.execute('mobile: getCurrentPackage')).includes('settings'),
+            { timeout: 10000, timeoutMsg: 'Settings app did not launch in time' }
+        );
+        const packageName = await driver.execute('mobile: getCurrentPackage');
         console.log('Current package:', packageName);
-        
         expect(packageName).toContain('settings');
     });
 
@@ -39,6 +45,9 @@ describe('Basic - App Launch & Device Info', () => {
     });
 
     it('should rotate screen to landscape', async () => {
+        await driver.execute('mobile: shell', {
+            command: 'settings put system accelerometer_rotation 1'
+        });
         await driver.setOrientation('LANDSCAPE');
         const orientation = await driver.getOrientation();
         console.log('Orientation:', orientation);
